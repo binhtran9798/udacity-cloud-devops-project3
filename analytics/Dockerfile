@@ -1,16 +1,13 @@
-FROM python:3.10-slim-buster
+FROM python:3.11.5-bookworm
 
-USER root
+WORKDIR /app
 
-# Dependencies required for psycopg2 (used for Postgres client)
-RUN apt update -y && apt install -y build-essential libpq-dev
+COPY . /app
 
-WORKDIR /analytics
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-COPY ./requirements.txt /analytics/requirements.txt
+EXPOSE 80
 
-RUN pip install -r requirements.txt
+ENV NAME World
 
-COPY . /analytics
-
-CMD  ["python", "app.py"]
+CMD ["python", "app.py"]
