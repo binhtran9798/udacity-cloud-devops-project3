@@ -50,7 +50,7 @@ variable "git_repository_url" {
 
 variable "github_personal_access_token" {
   type    = string
-  default = "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"
+  default = "<your_personal_token>"
 }
 
 variable "codebuild-ecr-role" {
